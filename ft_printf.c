@@ -6,7 +6,7 @@
 /*   By: maeskhai <maeskhai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 19:49:45 by maeskhai          #+#    #+#             */
-/*   Updated: 2024/11/26 13:26:36 by maeskhai         ###   ########.fr       */
+/*   Updated: 2024/11/30 11:29:29 by maeskhai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,25 +38,25 @@ static int	ft_format(char c, va_list pa)
 
 int	ft_printf(const char *s, ...)
 {
-	va_list	args;
+	va_list	ap;
 	int		count;
 	int		i;
 
 	i = 0;
 	count = 0;
-	va_start(args, s);
+	va_start(ap, s);
 	while (s[i])
 	{
 		if (s[i] == '%')
 		{
 			if (s[i + 1] == '\0')
 				return (count);
-			count += ft_format(s[++i], args);
+			count += ft_format(s[++i], ap);
 		}
 		else
 			count += ft_putchar(s[i]);
 		i++;
 	}
-	va_end(args);
+	va_end(ap);
 	return (count);
 }
